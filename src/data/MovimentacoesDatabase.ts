@@ -4,7 +4,6 @@ import Movimentacoes from "../models/MovimentacoesModel";
 
 dotenv.config()
 
-
 export default class MovimentacoesDatabase extends BaseDatabase {
     TABLE_NAME = (process.env.movimentacoes as string)
 

@@ -83,7 +83,7 @@ export default abstract class BaseDatabase {
             `)
             console.log(`tabela ${this.TABLE_NAME} criada com sucesso!`)
         } catch (error: any) {
-            console.log(error.sqlMessage || `erro ao criar tabela ${this.TABLE_NAME}`)
+            console.log(error.sqlMessage || error.message || `erro ao criar tabela ${this.TABLE_NAME}`)
             return error
         }
     }

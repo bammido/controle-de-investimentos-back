@@ -1,13 +1,9 @@
-import express, { Response, Request } from 'express'
-import cors from 'cors'
+import { Response, Request } from 'express'
 import dotenv from 'dotenv'
 import { usuarioRouter } from './routes/UsuarioRouter'
+import { app } from './app'
 
 dotenv.config()
-
-const app = express()
-app.use(express.json())
-app.use(cors())
 
 app.use('/usuario', usuarioRouter)
 
