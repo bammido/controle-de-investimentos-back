@@ -10,3 +10,19 @@ Content-Type: application/json
     "password": "123456",
     "nome": "teste" 
 }
+
+###
+GET http://localhost:4444/papel
+
+###
+POST http://localhost:4444/papel
+Content-Type: application/json
+
+{
+    
+    "nome": "teste", 
+    "papel": "MXRF11", 
+    "tipoDeRenda": "fixa", 
+    "tipoDeInvestimento": "", 
+    "taxasIncidentes": ""
+}

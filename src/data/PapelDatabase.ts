@@ -11,19 +11,19 @@ export default class PapelDatabase extends BaseDatabase {
         return await super.getAll()
     }
 
-    public async create(novaMovimentacao: Papel): Promise<void> {
-        await super.create(novaMovimentacao)
+    public async create(novoPapel: Papel): Promise<void> {
+        await super.create(novoPapel)
     }
 
-    protected async findOne(where: Papel): Promise<any> {
+    public async findOne(where: any): Promise<any> {
         return await super.findOne(where)
     }
 
-    protected async dropTable(): Promise<void> {
+    public async dropTable(): Promise<void> {
         await super.dropTable()
     }
 
-    protected async delete(where: any): Promise<void> {
+    public async delete(where: any): Promise<void> {
         await super.delete(where)
     }
 

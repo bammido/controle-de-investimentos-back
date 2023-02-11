@@ -17,7 +17,7 @@ class UsuarioController {
 
             res.send(usuarios)
         } catch (error: any) {
-            res.status(400).send({ message: error.message })
+            res.status(statusError || 400).send({ message: error.message })
         }
     }
 
@@ -30,14 +30,17 @@ class UsuarioController {
             const buscaEmailJacadastrado = await usuarioDatabase.findOne({ email })
 
             if (buscaEmailJacadastrado?.email) {
+                statusError = 409
                 throw new Error('email ja cadastrado')
             }
 
             if (`${password}`.length < 8) {
+                statusError = 422
                 throw new Error('a senha deve conter pelo menos 8 dígitos');
             }
 
             if (Number(password)) {
+                statusError = 422
                 throw new Error('a senha não pode conter apenas números');
             }
 
