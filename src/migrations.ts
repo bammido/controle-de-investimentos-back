@@ -1,3 +1,9 @@
+import { papelDatabase } from "./data/PapelDatabase";
 import { usuarioDatabase } from "./data/UsuarioDatabase";
 
-usuarioDatabase.createTable().finally(() => process.exit())
+async function createTables(): Promise<void> {
+    usuarioDatabase.createTable()
+    papelDatabase.createTable()
+}
+
+createTables().finally(() => process.exit())

@@ -28,7 +28,9 @@ export default class PapelDatabase extends BaseDatabase {
     }
 
     public async createTable(): Promise<void> {
-        const colunas = 'papel VARCHAR(10) NOT NULL PRIMARY KEY, nome VARCHAR(50) NOT NULL, tipoDeRenda VARCHAR(20) NOT NULL, tipoDeInvestimento VARCHAR(20) NOT NULL'
+        const colunas = 'papel VARCHAR(10) NOT NULL PRIMARY KEY, nome VARCHAR(50) NOT NULL, tipoDeRenda VARCHAR(20) NOT NULL, tipoDeInvestimento VARCHAR(20), taxasIncidentes VARCHAR(50)'
         await super.createTable(colunas)
     }
 }
+
+export const papelDatabase = new PapelDatabase()
