@@ -15,6 +15,6 @@ app.get('/', (req: Request, res: Response) => {
     res.status(200).send('pong')
 })
 
-app.listen(process.env.PORT || 4444, () => {
+app.listen(process.env.PORT || process.env.port, () => {
     console.log(`Server rodando http://localhost:${process.env.port}`);
 })
