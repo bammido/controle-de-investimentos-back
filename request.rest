@@ -1,0 +1,45 @@
+###
+GET http://localhost:4444/usuario
+
+###
+POST http://localhost:4444/usuario
+Content-Type: application/json
+
+{
+    "email": "teste3@teste.com",
+    "password": "1234567A",
+    "nome": "teste" 
+}
+
+###
+GET http://localhost:4444/papel
+
+###
+POST http://localhost:4444/papel
+Content-Type: application/json
+
+{
+    
+    "nome": "teste", 
+    "papel": "MXRF11", 
+    "tipoDeRenda": "fixa", 
+    "tipoDeInvestimento": "", 
+    "taxasIncidentes": ""
+}
+
+###
+GET http://localhost:4444/movimentacao
+
+###
+POST http://localhost:4444/movimentacao
+Content-Type: application/json
+
+{
+    "userId": "59c5710b-f3f1-440c-85f2-7edf768af884",
+    "papel": "MXRF12", 
+    "dataDaCompra": "2020-10-10", 
+    "preco": 10, 
+    "qtd": 5,
+    "corretora": "modal",
+    "tipoMovimentacao": "venda"
+}
