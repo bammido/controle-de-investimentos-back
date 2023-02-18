@@ -3,14 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  
   "scripts": {
     "migrations": "clear && ts-node-dev ./src/migrations.ts",
     "dropTable": "clear && ts-node-dev ./src/dropTable.ts",
-    "start": "ls && npm run start-heroku",
+    "start": "clear && env-cmd -f ./.env ts-node ./src/index.ts",
     "start-heroku": "node ./build/index.js",
     "build": "tsc",
-    "dev": "clear && ts-node-dev ./src/index.ts"
+    "dev": "clear && env-cmd -f ./.env.development ts-node-dev ./src/index.ts"
   },
   "repository": {
     "type": "git",
@@ -26,6 +25,7 @@
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
+    "env-cmd": "^10.1.0",
     "express": "^4.18.2",
     "jose": "^4.11.2",
     "knex": "^2.4.2",
