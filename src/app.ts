@@ -10,3 +10,5 @@ app.use(cors(
         methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
     }
 ))
+
+app.use(express.static(__dirname + '/public'));
