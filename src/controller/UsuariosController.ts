@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
 import { usuarioDatabase } from "../data/UsuarioDatabase";
 import Usuario from "../models/Usuario";
-import { v4 as uuidV4 } from 'uuid'
 
 import dotenv from 'dotenv'
 import generateToken from "../helpers/functions/generateToken";
+import generateUniqueId from "../helpers/functions/generateUniqueId";
 
 dotenv.config()
 
@@ -25,7 +25,6 @@ class UsuarioController {
         let statusError = 400
         try {
             const { email, password, nome } = req.body
-            const id = uuidV4()
 
             const buscaEmailJacadastrado = await usuarioDatabase.findOne({ email })
 
@@ -44,7 +43,7 @@ class UsuarioController {
                 throw new Error('a senha não pode conter apenas números');
             }
 
-            const novoUsuario = new Usuario(id, email, password, nome)
+            const novoUsuario = new Usuario(email, password, nome)
 
             await usuarioDatabase.create(novoUsuario)
 

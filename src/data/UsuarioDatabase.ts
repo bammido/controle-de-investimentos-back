@@ -4,7 +4,7 @@ import Usuario from "../models/Usuario";
 
 dotenv.config()
 
-export default class UsuarioDatabase extends BaseDatabase {
+class UsuarioDatabase extends BaseDatabase {
     TABLE_NAME = (process.env.usuarios as string)
 
     public async getAll(): Promise<Usuario[]> {

@@ -4,7 +4,7 @@ import Papel from "../models/Papel";
 
 dotenv.config()
 
-export default class PapelDatabase extends BaseDatabase {
+class PapelDatabase extends BaseDatabase {
     TABLE_NAME = (process.env.papeis as string)
 
     public async getAll(): Promise<Papel[]> {

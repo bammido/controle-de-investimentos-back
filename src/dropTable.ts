@@ -1,4 +1,4 @@
+import { movimentacaoDatabase } from "./data/MovimentacoesDatabase";
 import { usuarioDatabase } from "./data/UsuarioDatabase";
 
-
-usuarioDatabase.dropTable()
+movimentacaoDatabase.dropTable()
