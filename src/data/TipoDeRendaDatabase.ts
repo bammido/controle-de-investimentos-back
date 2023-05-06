@@ -28,7 +28,7 @@ class TipoDeRendaDatabase extends BaseDatabase {
     }
 
     public async createTable(): Promise<void> {
-        const colunas = `id VARCHAR(255) NOT NULL PRIMARY KEY, tipo VARCHAR(20) NOT NULL`
+        const colunas = `id VARCHAR(255) NOT NULL PRIMARY KEY, tipo VARCHAR(20) NOT NULL UNIQUE`
         return await super.createTable(colunas)
     }
 
