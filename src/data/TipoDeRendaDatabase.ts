@@ -32,6 +32,15 @@ class TipoDeRendaDatabase extends BaseDatabase {
         return await super.createTable(colunas)
     }
 
+    public async populate(): Promise<void> {
+        const rendas = [
+            new TipoDeRenda('renda fixa'),
+            new TipoDeRenda('renda variavel'),
+            new TipoDeRenda('tesouro'),
+            new TipoDeRenda('fundos de investimento')
+        ]
+        await super.create(rendas)
+    }
 }
 
 export const tipoDeRendaDatabase = new TipoDeRendaDatabase()

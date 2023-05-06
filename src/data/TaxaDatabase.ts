@@ -32,6 +32,15 @@ class TaxaDatabase extends BaseDatabase {
         return await super.createTable(colunas)
     }
 
+    public async populate(): Promise<void> {
+        const taxas = [
+            new Taxa('selic'),
+            new Taxa('CDI'),
+            new Taxa('IPCA'),
+            new Taxa('PREFIXADO')
+        ]
+        await super.create(taxas)
+    }
 }
 
 export const taxaDatabase = new TaxaDatabase()

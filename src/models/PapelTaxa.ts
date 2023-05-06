@@ -4,6 +4,7 @@ export default class PapelTaxa {
     constructor(
         public papel: string,
         public taxa: string,
+        public valor?: string,
         public id: string = generateUniqueId()
     ) { }
 

@@ -28,7 +28,7 @@ class PapelTaxaDatabase extends BaseDatabase {
     }
 
     public async createTable(): Promise<void> {
-        const colunas = `id VARCHAR(255) NOT NULL PRIMARY KEY, papel VARCHAR(10) NOT NULL UNIQUE, taxa VARCHAR(50) NOT NULL UNIQUE, FOREIGN KEY (papel) REFERENCES ${(process.env.papeis as string)} (papel), FOREIGN KEY (taxa) REFERENCES ${(process.env.taxas as string)} (taxa)`
+        const colunas = `id VARCHAR(255) NOT NULL PRIMARY KEY, papel VARCHAR(10) NOT NULL UNIQUE, taxa VARCHAR(50) NOT NULL UNIQUE, valor FLOAT, FOREIGN KEY (papel) REFERENCES ${(process.env.papeis as string)} (papel), FOREIGN KEY (taxa) REFERENCES ${(process.env.taxas as string)} (taxa)`
         return await super.createTable(colunas)
     }
 
