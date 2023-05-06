@@ -28,8 +28,12 @@ class PapelDatabase extends BaseDatabase {
     }
 
     public async createTable(): Promise<void> {
-        const colunas = 'papel VARCHAR(10) NOT NULL PRIMARY KEY, nome VARCHAR(50) NOT NULL, tipoDeRenda VARCHAR(20) NOT NULL, tipoDeInvestimento VARCHAR(20), taxasIncidentes VARCHAR(50)'
+        const colunas = 'id Varchar(255) PRIMARY KEY, papel VARCHAR(10) NOT NULL UNIQUE, nome VARCHAR(50) NOT NULL, tipoDeRenda VARCHAR(20) NOT NULL, tipoDeInvestimento VARCHAR(20), taxasIncidentes VARCHAR(50)'
         await super.createTable(colunas)
+    }
+
+    public async update(where: any, update: any): Promise<any> {
+        return await super.update(where, update)
     }
 }
 

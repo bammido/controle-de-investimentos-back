@@ -87,4 +87,15 @@ export default abstract class BaseDatabase {
             return error
         }
     }
+
+    protected async update(where: any, update: any) {
+        try {
+            await BaseDatabase.connection(this.TABLE_NAME).where(where).update(update)
+
+            console.log(`item da tabela ${this.TABLE_NAME} editado com sucesso!`)
+        } catch (error: any) {
+            console.log(error.sqlMessage || error.message || `erro ao criar tabela ${this.TABLE_NAME}`)
+            return error
+        }
+    }
 }

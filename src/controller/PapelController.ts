@@ -40,6 +40,29 @@ class PapelController {
             res.status(statusError || 400).send({ message: error.message })
         }
     }
+
+    async editarPapel(req: Request, res: Response) {
+        let statusError = 400
+        try {
+            const { id } = req.params
+
+            const { nome, papel, tipoDeRenda, tipoDeInvestimento, taxasIncidentes } = req.body
+
+            const update = {
+                nome,
+                papel,
+                tipoDeRenda,
+                tipoDeInvestimento,
+                taxasIncidentes
+            }
+
+            const papelAtualizado = await papelDatabase.update({ id }, update)
+
+            res.send(papelAtualizado)
+        } catch (error: any) {
+            res.status(statusError || 400).send({ message: error.message })
+        }
+    }
 }
 
 export const papelController = new PapelController()

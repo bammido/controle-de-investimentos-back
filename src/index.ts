@@ -11,10 +11,10 @@ app.use('/usuario', usuarioRouter)
 app.use('/papel', papelRouter)
 app.use('/movimentacao', movimentacaoRouter)
 
-app.get('/ping', (req: Request, res: Response) => {
+app.get('/', (req: Request, res: Response) => {
     res.status(200).send('pong')
 })
 
-app.listen(process.env.port, () => {
+app.listen(process.env.PORT || process.env.port, () => {
     console.log(`Server rodando http://localhost:${process.env.port}`);
 })

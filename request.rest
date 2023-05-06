@@ -19,7 +19,18 @@ POST http://localhost:4444/papel
 Content-Type: application/json
 
 {
-    
+    "nome": "teste", 
+    "papel": "MXRF11", 
+    "tipoDeRenda": "fixa", 
+    "tipoDeInvestimento": "", 
+    "taxasIncidentes": ""
+}
+
+###
+PUT http://localhost:4444/papel/f7a7d9af-f29f-4446-8b75-fe1f10206328
+Content-Type: application/json
+
+{
     "nome": "teste", 
     "papel": "MXRF11", 
     "tipoDeRenda": "fixa", 
