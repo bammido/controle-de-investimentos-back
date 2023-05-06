@@ -5,7 +5,7 @@ import TipoDeRenda from "../models/TipoDeRenda";
 dotenv.config()
 
 class TipoDeRendaDatabase extends BaseDatabase {
-    TABLE_NAME = (process.env.TiposDeRenda as string)
+    TABLE_NAME = (process.env.tiposDeRenda as string)
 
     public async getAll(): Promise<TipoDeRenda[]> {
         return await super.getAll()

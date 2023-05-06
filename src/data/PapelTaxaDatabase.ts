@@ -5,7 +5,7 @@ import PapelTaxa from "../models/PapelTaxa";
 dotenv.config()
 
 class PapelTaxaDatabase extends BaseDatabase {
-    TABLE_NAME = (process.env.PapelTaxas as string)
+    TABLE_NAME = (process.env.papelTaxas as string)
 
     public async getAll(): Promise<PapelTaxa[]> {
         return await super.getAll()

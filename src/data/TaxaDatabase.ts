@@ -5,7 +5,7 @@ import Taxa from "../models/Taxa";
 dotenv.config()
 
 class TaxaDatabase extends BaseDatabase {
-    TABLE_NAME = (process.env.Taxas as string)
+    TABLE_NAME = (process.env.taxas as string)
 
     public async getAll(): Promise<Taxa[]> {
         return await super.getAll()
