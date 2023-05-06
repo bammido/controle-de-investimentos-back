@@ -28,7 +28,7 @@ class PapelDatabase extends BaseDatabase {
     }
 
     public async createTable(): Promise<void> {
-        const colunas = 'id Varchar(255) PRIMARY KEY, papel VARCHAR(10) NOT NULL UNIQUE, nome VARCHAR(50) NOT NULL, tipoDeRenda VARCHAR(20) NOT NULL, tipoDeInvestimento VARCHAR(20), taxasIncidentes VARCHAR(50)'
+        const colunas = `id Varchar(255) PRIMARY KEY, papel VARCHAR(10) NOT NULL UNIQUE, nome VARCHAR(50) NOT NULL, tipoDeRenda VARCHAR(20) NOT NULL, tipoDeInvestimento VARCHAR(20), FOREIGN KEY (tipoDeRenda) REFERENCES ${(process.env.tiposDeRenda as string)} (tipo)`
         await super.createTable(colunas)
     }
 

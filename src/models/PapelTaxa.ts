@@ -1,11 +1,10 @@
 import generateUniqueId from "../helpers/functions/generateUniqueId";
 
-export default class Papel {
+export default class PapelTaxa {
     constructor(
         public papel: string,
-        public nome: string,
-        public tipoDeRenda: string,
-        public tipoDeInvestimento?: string,
+        public taxa: string,
+        public valor?: string,
         public id: string = generateUniqueId()
     ) { }
 

@@ -22,7 +22,7 @@ export default abstract class BaseDatabase {
         try {
             await BaseDatabase.connection(this.TABLE_NAME).insert(entity)
 
-            console.log(`item inserido na tabela ${this.TABLE_NAME}`)
+            console.log(`item(s) inserido(S) na tabela ${this.TABLE_NAME}`)
         } catch (error: any) {
             const errorMessage = error.sqlMessage || `erro ao inserir item na tabela ${this.TABLE_NAME}`
             console.log(errorMessage)
