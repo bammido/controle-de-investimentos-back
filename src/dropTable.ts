@@ -1,4 +1,4 @@
-import { movimentacaoDatabase } from "./data/MovimentacoesDatabase";
+import { movimentacaoDatabase } from "./data/MovimentacaoDatabase";
 import { papelDatabase } from "./data/PapelDatabase";
 import { usuarioDatabase } from "./data/UsuarioDatabase";
 

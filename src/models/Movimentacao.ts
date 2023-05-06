@@ -1,9 +1,9 @@
 import generateUniqueId from "../helpers/functions/generateUniqueId";
 
-export default class Movimentacao {
+export default class Compras {
     constructor(
         public papel: string,
-        public dataDaCompra: Date,
+        public data: Date,
         public corretora: string,
         public preco: number,
         public qtd: number,

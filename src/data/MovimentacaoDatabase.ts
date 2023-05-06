@@ -1,10 +1,10 @@
 import BaseDatabase from "./BaseDatabase";
 import dotenv from "dotenv"
-import Movimentacoes from "../models/MovimentacaoModel";
+import Movimentacoes from "../models/Movimentacao";
 
 dotenv.config()
 
-class MovimentacoesDatabase extends BaseDatabase {
+class MovimentacaosDatabase extends BaseDatabase {
     TABLE_NAME = (process.env.movimentacoes as string)
 
     public async getAll(): Promise<Movimentacoes[]> {
@@ -28,10 +28,10 @@ class MovimentacoesDatabase extends BaseDatabase {
     }
 
     public async createTable(): Promise<void> {
-        const colunas = `id VARCHAR(255) NOT NULL PRIMARY KEY, papel VARCHAR(10) NOT NULL, dataDaCompra DATE NOT NULL, corretora VARCHAR(50) NOT NULL, preco FLOAT NOT NULL, qtd FLOAT NOT NULL, tipoMovimentacao VARCHAR(10) NOT NULL, userId VARCHAR(255) NOT NULL, FOREIGN KEY (papel) REFERENCES ${(process.env.papeis as string)} (papel), FOREIGN KEY (userId) REFERENCES ${(process.env.usuarios as string)} (id)`
+        const colunas = `id VARCHAR(255) NOT NULL PRIMARY KEY, papel VARCHAR(10) NOT NULL, data DATE NOT NULL, corretora VARCHAR(50) NOT NULL, preco FLOAT NOT NULL, qtd FLOAT NOT NULL, tipoMovimentacao VARCHAR(10) NOT NULL, userId VARCHAR(255) NOT NULL, FOREIGN KEY (papel) REFERENCES ${(process.env.papeis as string)} (papel), FOREIGN KEY (userId) REFERENCES ${(process.env.usuarios as string)} (id), FOREIGN KEY (corretora) REFERENCES ${(process.env.corretoras as string)} (nome)`
         await super.createTable(colunas)
     }
 
 }
 
-export const movimentacaoDatabase = new MovimentacoesDatabase()
+export const movimentacaoDatabase = new MovimentacaosDatabase()
