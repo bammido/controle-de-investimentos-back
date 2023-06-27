@@ -54,3 +54,9 @@ Content-Type: application/json
     "corretora": "modal",
     "tipoMovimentacao": "venda"
 }
+
+###
+GET http://localhost:4444/tipo-de-renda
+
+###
+GET http://localhost:4444/tipo-de-investimento

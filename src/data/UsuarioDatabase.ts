@@ -32,6 +32,13 @@ class UsuarioDatabase extends BaseDatabase {
         return await super.createTable(colunas)
     }
 
+    public async populate(): Promise<void> {
+        const usuarios = [
+            new Usuario('teste@email.com', '12345678', 'usuario teste')
+        ]
+        await super.create(usuarios)
+    }
+
 }
 
 export const usuarioDatabase = new UsuarioDatabase()

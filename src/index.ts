@@ -4,12 +4,16 @@ import { usuarioRouter } from './routes/UsuarioRouter'
 import { app } from './app'
 import { papelRouter } from './routes/PapelRouter'
 import { movimentacaoRouter } from './routes/MovimentacoesRouter'
+import { tipoDeRendaRouter } from './routes/TipoDeRendaRouter'
+import { tipoDeInvestimentoRouter } from './routes/TipoDeInvestimentoRouter'
 
 dotenv.config()
 
 app.use('/usuario', usuarioRouter)
 app.use('/papel', papelRouter)
 app.use('/movimentacao', movimentacaoRouter)
+app.use('/tipo-de-renda', tipoDeRendaRouter)
+app.use('/tipo-de-investimento', tipoDeInvestimentoRouter)
 
 app.get('/', (req: Request, res: Response) => {
     res.status(200).send('pong')

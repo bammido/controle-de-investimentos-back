@@ -17,7 +17,7 @@ class PapelController {
     async cadastrarPapel(req: Request, res: Response) {
         let statusError = 400
         try {
-            const { nome, papel, tipoDeRenda, tipoDeInvestimento, taxasIncidentes } = req.body
+            const { nome, papel, tipoDeRenda, tipoDeInvestimento } = req.body
 
             if (!papel || !nome || !tipoDeRenda) {
                 statusError = 422
@@ -31,7 +31,7 @@ class PapelController {
                 throw new Error('papel já cadastrado!')
             }
 
-            const novoPapel = new Papel((papel as string), (nome as string), (tipoDeRenda as string), (tipoDeInvestimento as string | undefined), (taxasIncidentes as string | undefined))
+            const novoPapel = new Papel((papel as string), (nome as string), (tipoDeRenda as string), (tipoDeInvestimento as string | undefined))
 
             await papelDatabase.create(novoPapel)
 
@@ -46,14 +46,13 @@ class PapelController {
         try {
             const { id } = req.params
 
-            const { nome, papel, tipoDeRenda, tipoDeInvestimento, taxasIncidentes } = req.body
+            const { nome, papel, tipoDeRenda, tipoDeInvestimento } = req.body
 
             const update = {
                 nome,
                 papel,
                 tipoDeRenda,
-                tipoDeInvestimento,
-                taxasIncidentes
+                tipoDeInvestimento
             }
 
             const papelAtualizado = await papelDatabase.update({ id }, update)
