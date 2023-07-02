@@ -60,3 +60,14 @@ GET http://localhost:4444/tipo-de-renda
 
 ###
 GET http://localhost:4444/tipo-de-investimento
+
+###
+GET http://localhost:4444/corretora
+
+###
+POST http://localhost:4444/corretora
+Content-Type: application/json
+
+{
+    "nome": "Modal"
+}

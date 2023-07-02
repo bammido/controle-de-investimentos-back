@@ -19,11 +19,11 @@ class MovimentacaoController {
     async cadastrarMovimentacao(req: Request, res: Response) {
         let statusError = 400
         try {
-            const { papel, dataDaCompra, corretora, preco, qtd, userId, tipoMovimentacao } = req.body
+            const { papel, data, corretora, preco, qtd, userId, tipoMovimentacao } = req.body
 
             const papelJaCadastrado = await papelDatabase.findOne({ papel })
 
-            if (!papel || !dataDaCompra || !corretora || !preco || !qtd || !userId || !tipoMovimentacao) {
+            if (!papel || !data || !corretora || !preco || !qtd || !userId || !tipoMovimentacao) {
                 statusError = 422
                 throw new Error('Os campos papel, dataDaCompra, corretora, preco, qtd, userId e tipoMovimentacao são obrigatórios')
             }
@@ -40,7 +40,7 @@ class MovimentacaoController {
                 throw new Error('usuario não encontrado!')
             }
 
-            const novaMovimentacao = new Movimentacao(papel, dataDaCompra, corretora, preco, qtd, userId, tipoMovimentacao)
+            const novaMovimentacao = new Movimentacao(papel, data, corretora, preco, qtd, userId, tipoMovimentacao)
 
             await movimentacaoDatabase.create(novaMovimentacao)
 
