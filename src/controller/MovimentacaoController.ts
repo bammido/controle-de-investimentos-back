@@ -50,6 +50,30 @@ class MovimentacaoController {
             res.status(statusError || 400).send({ message: error.message })
         }
     }
+
+    async editarMovimentacao(req: Request, res: Response) {
+        let statusError = 400
+        try {
+            const { id } = req.params
+
+            const { papel, data, corretora, preco, qtd, tipoMovimentacao } = req.body
+
+            const update = {
+                papel,
+                data,
+                corretora,
+                preco,
+                qtd,
+                tipoMovimentacao
+            }
+
+            const movimentacaoAtualizada = await movimentacaoDatabase.update({ id }, update)
+
+            res.send(movimentacaoAtualizada)
+        } catch (error: any) {
+            res.status(statusError || 400).send({ message: error.message })
+        }
+    }
 }
 
 export const movimentacaoController = new MovimentacaoController()

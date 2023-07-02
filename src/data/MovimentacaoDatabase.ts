@@ -32,6 +32,9 @@ class MovimentacaosDatabase extends BaseDatabase {
         await super.createTable(colunas)
     }
 
+    public async update(where: any, update: any): Promise<any> {
+        return await super.update(where, update)
+    }
 }
 
 export const movimentacaoDatabase = new MovimentacaosDatabase()
