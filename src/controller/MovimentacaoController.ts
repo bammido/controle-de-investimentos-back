@@ -3,12 +3,26 @@ import { movimentacaoDatabase } from "../data/MovimentacaoDatabase"
 import { papelDatabase } from "../data/PapelDatabase"
 import { usuarioDatabase } from "../data/UsuarioDatabase"
 import Movimentacao from "../models/Movimentacao"
+import verifyToken from "../helpers/functions/verifyToken"
 
 class MovimentacaoController {
     async getMovimentacoes(req: Request, res: Response) {
         let statusError = 400
         try {
             const movimentacoes = await movimentacaoDatabase.getAll()
+
+            res.send(movimentacoes)
+        } catch (error: any) {
+            res.status(statusError || 400).send({ message: error.message })
+        }
+    }
+
+    async getMovimentacoesPeloId(req: Request, res: Response) {
+        let statusError = 400
+        try {
+            const { userId } = req.params
+
+            const movimentacoes = await movimentacaoDatabase.getAllWithWhere({ userId })
 
             res.send(movimentacoes)
         } catch (error: any) {
@@ -65,6 +79,21 @@ class MovimentacaoController {
                 preco,
                 qtd,
                 tipoMovimentacao
+            }
+
+            const movimentacaoParaAtualizar = await movimentacaoDatabase.findOne({ id })
+
+            if (!movimentacaoParaAtualizar) {
+                statusError = 404
+                throw new Error('Movimentação não encontrado!')
+            }
+
+            const token = (req.headers['x-auth-token'] as string)
+
+            const { payload: { data: { 'id': userId } } } = await verifyToken(token)
+
+            if (userId !== movimentacaoParaAtualizar.userId) {
+                throw new Error('Somente o usuário referente a essa movimentação tem acesso a modificar suas movimentações')
             }
 
             const movimentacaoAtualizada = await movimentacaoDatabase.update({ id }, update)
