@@ -41,7 +41,7 @@ export default abstract class BaseDatabase {
         }
     };
 
-    protected async getAllWithWhere(where: any): Promise<any[]> {
+    protected async getAllWhere(where: any): Promise<any[]> {
         try {
             const result = await BaseDatabase.connection(this.TABLE_NAME).select().where(where)
 
@@ -65,7 +65,7 @@ export default abstract class BaseDatabase {
 
     }
 
-    protected async findOne(where: any): Promise<any[]> {
+    protected async findOne(where: any): Promise<any> {
         try {
             const result = await BaseDatabase.connection(this.TABLE_NAME).select().where(where)
 

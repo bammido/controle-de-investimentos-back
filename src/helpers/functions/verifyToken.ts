@@ -9,7 +9,7 @@ export default async function verifyToken(token?: string | null): Promise<any> {
         if (!token) {
             throw new Error('não foi passado o token')
         }
-        const jwt = await jose.jwtVerify(token, secret)
+        const jwt = await jose.jwtVerify(token, secret, { clockTolerance: "23h" })
 
         return jwt
     } catch (error: any) {

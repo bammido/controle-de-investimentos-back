@@ -11,15 +11,15 @@ class MovimentacaosDatabase extends BaseDatabase {
         return await super.getAll()
     }
 
-    public async getAllWithWhere(where: any): Promise<Movimentacoes[]> {
-        return await super.getAllWithWhere(where)
+    public async getAllWhere(where: any): Promise<Movimentacoes[]> {
+        return await super.getAllWhere(where)
     }
 
     public async create(novaMovimentacao: Movimentacoes): Promise<void> {
         await super.create(novaMovimentacao)
     }
 
-    public async findOne(where: any): Promise<any> {
+    public async findOne(where: any): Promise<Movimentacoes> {
         return await super.findOne(where)
     }
 
