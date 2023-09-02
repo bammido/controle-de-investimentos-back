@@ -41,6 +41,17 @@ export default abstract class BaseDatabase {
         }
     };
 
+    protected async getAllWhere(where: any): Promise<any[]> {
+        try {
+            const result = await BaseDatabase.connection(this.TABLE_NAME).select().where(where)
+
+            return result
+        } catch (error: any) {
+            console.log(error.sqlMessage || `erro ao pegar itens na tabela ${this.TABLE_NAME} com where ${where}`)
+            return error
+        }
+    };
+
     protected async dropTable(): Promise<void> {
         try {
             await BaseDatabase.connection.raw(`
@@ -54,7 +65,7 @@ export default abstract class BaseDatabase {
 
     }
 
-    protected async findOne(where: any): Promise<any[]> {
+    protected async findOne(where: any): Promise<any> {
         try {
             const result = await BaseDatabase.connection(this.TABLE_NAME).select().where(where)
 

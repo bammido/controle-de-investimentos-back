@@ -46,7 +46,7 @@ POST http://localhost:4444/movimentacao
 Content-Type: application/json
 
 {
-    "userId": "59c5710b-f3f1-440c-85f2-7edf768af884",
+    "userId": "5d083def-c54f-4d3f-bf81-7568959b3bb3",
     "papel": "MXRF12", 
     "dataDaCompra": "2020-10-10", 
     "preco": 10, 
