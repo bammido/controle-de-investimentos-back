@@ -15,7 +15,7 @@ class UsuarioDatabase extends BaseDatabase {
         return await super.create(novaMovimentacao)
     }
 
-    public async findOne(where: any): Promise<any> {
+    public async findOne(where: any): Promise<Usuario> {
         return await super.findOne(where)
     }
 

@@ -6,6 +6,7 @@ dotenv.config()
 
 class MovimentacaosDatabase extends BaseDatabase {
     TABLE_NAME = (process.env.movimentacoes as string)
+    TABLE_PAPEIS = (process.env.papeis as string)
 
     public async getAll(): Promise<Movimentacoes[]> {
         return await super.getAll()
@@ -38,6 +39,10 @@ class MovimentacaosDatabase extends BaseDatabase {
 
     public async update(where: any, update: any): Promise<any> {
         return await super.update(where, update)
+    }
+
+    public async getMovimentacoesComPapeis(where: any) {
+        return await BaseDatabase.connection(this.TABLE_NAME).join(this.TABLE_PAPEIS, `${this.TABLE_NAME}.papel`, '=', `${this.TABLE_PAPEIS}.papel`).select().where(where)
     }
 }
 

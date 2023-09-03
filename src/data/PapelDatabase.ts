@@ -6,6 +6,7 @@ dotenv.config()
 
 class PapelDatabase extends BaseDatabase {
     TABLE_NAME = (process.env.papeis as string)
+    TABLE_MOVIMENTACOES = (process.env.movimentacoes as string)
 
     public async getAll(): Promise<Papel[]> {
         return await super.getAll()

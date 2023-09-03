@@ -5,6 +5,8 @@ import Usuario from "../models/Usuario";
 import dotenv from 'dotenv'
 import generateToken from "../helpers/functions/generateToken";
 import generateUniqueId from "../helpers/functions/generateUniqueId";
+import { movimentacaoDatabase } from "../data/MovimentacaoDatabase";
+import Compras from "../models/Movimentacao";
 
 dotenv.config()
 
@@ -73,6 +75,46 @@ class UsuarioController {
             res.status(statusError || 400).send({ message: error.message })
         }
     }
+
+    async getInvestimentosAtualizados(req: Request, res: Response) {
+        let statusError = 400
+        try {
+            const { id } = req.params
+
+            const usuario = await usuarioDatabase.findOne({ id })
+
+            if (!usuario) {
+                statusError = 404
+                throw new Error('Usuario não encontrado')
+            }
+
+            const movimentacoesPapeis: any = {}
+
+            const movimentacoes = await movimentacaoDatabase.getMovimentacoesComPapeis({ userId: id })
+
+            movimentacoes.map(mov => {
+                if (!movimentacoesPapeis[mov.tipoDeRenda]) {
+                    movimentacoesPapeis[mov.tipoDeRenda] = {}
+                }
+
+                if (!movimentacoesPapeis[mov.tipoDeRenda][mov.tipoDeInvestimento]) {
+                    movimentacoesPapeis[mov.tipoDeRenda][mov.tipoDeInvestimento] = {}
+                }
+
+                if (!movimentacoesPapeis[mov.tipoDeRenda][mov.tipoDeInvestimento][mov.papel]) {
+                    movimentacoesPapeis[mov.tipoDeRenda][mov.tipoDeInvestimento][mov.papel] = [mov]
+                    return
+                }
+
+                movimentacoesPapeis[mov.tipoDeRenda][mov.tipoDeInvestimento][mov.papel].push(mov)
+            })
+
+            res.send({ movimentacoesPapeis })
+        } catch (error: any) {
+            res.status(statusError || 400).send({ message: error.message })
+        }
+    }
+
 }
 
 export const usuarioController = new UsuarioController()
